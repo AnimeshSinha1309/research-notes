@@ -1,0 +1,102 @@
+\chapter{General Relativity}
+
+
+
+\section{Preliminaries}
+
+
+\subsection{What is flat space}
+
+Space is flat if there exists a way to chose the metric tensor, such that it's the knonecker delta. $\eta^{x,y} = \delta_{x,y}$.
+
+\begin{small}
+  A piece of flat paper that is folded is still flat, it has no curvature, it can be made flat again and the notion of distance is still the same as when it was flat. This is just extrinsic curvature, which comes from the way it's embedded in a higher dimentional space.
+\end{small}
+
+
+\subsection{Tensor Analysis}
+
+\paragraph{} When we take the components as scalar that sum to it, the components are contravarient components.
+\begin{equation}
+  V = V^1 \hat{e}_1 + V^2 \hat{e}_2 + V^3 \hat{e}_3
+\end{equation}
+
+And if we find the components using dot products, we get the covarient components.
+\begin{equation}
+  V_n = V \cdot \hat{e}_n = \Sigma_n V^n (e_n \cdot e_m)
+\end{equation}
+
+These are exactly the same thing when we are in the Cartesian coordinates.
+
+\subsubsection{Transformation Rules of Tensors}
+
+\paragraph{} For contravarient index:
+\begin{equation}
+  dy^m = \frac{\partial y^m}{\partial x^n} dx^n
+\end{equation}
+\begin{equation}
+  \frac{\partial S}{\partial y^m} = \frac{\partial x^n}{\partial y^m} \frac{\partial S}{\partial x^n}
+\end{equation}
+
+\paragraph{} For covarient index:
+\begin{equation}
+  dy^m = \frac{\partial y^m}{\partial x^n} dx^n
+\end{equation}
+\begin{equation}
+  \frac{\partial S}{\partial y^m} = \frac{\partial x^n}{\partial y^m} \frac{\partial S}{\partial x^n}
+\end{equation}
+
+\paragraph{} For Mixed tensors (Rank 2):
+\begin{equation}
+  (W^\prime)^m_n = \frac{\partial y^m}{\partial x^p} \frac{\partial x^q}{\partial y^n} W^p_q
+\end{equation}
+\paragraph{} For Covarient tensors (Rank 2):
+\begin{equation}
+  (W^\prime)_{mn} = \frac{\partial x^p}{\partial y^m} \frac{\partial x^q}{\partial y^n} W_{pq}
+\end{equation}
+\paragraph{} For contravarient tensors (Rank 2):
+\begin{equation}
+  (W^\prime)^{mn} = \frac{\partial y^m}{\partial x^p} \frac{\partial y^n}{\partial x^q} W^{pq}
+\end{equation}
+
+\subsubsection{Addition, Multiplication, Contraction}
+
+\paragraph{} We only add tensor if they have indices of the same kind, that is:
+\begin{equation}
+  T^{m_1,m_2...m_k}_{n_1,n_2...n_l} + S^{m_1,m_2...m_k}_{n_1,n_2...n_l} = (T + S)^{m_1,m_2...m_k}_{n_1,n_2...n_l}
+\end{equation}
+
+\paragraph{} We can multiply any two tensors (We do get tensors of higher rank):
+\begin{eqnarray}
+  V^m \otimes W_n &=& X^m_n  \\
+  V^m \otimes W^n &=& X^{mn} \\
+  V_m \otimes W_n &=& X_{mn}
+\end{eqnarray}
+
+\paragraph{} The generalization of inner product of two vectors to tensors is called it's contraction.
+Proof/Intuition of contraction:
+\begin{equation}
+  (V^m W_m)^\prime = \frac{\partial }{\partial} (V^a W_b)
+\end{equation}
+\paragraph{} When we contract an upper with a lower index, we reduce the number of indices (rank) by 2, as both of them become dummy indices, and we sum over them.
+
+\subsubsection{The Metric Tensor}
+
+\begin{equation}
+  ds^2 = g(x)_{mn} dx^m dx^n
+\end{equation}
+\paragraph{} The metric tensor is always symetric. Everyone agrees on the length of every vector, though not on the individual components, when viewed from different frames.
+
+Transformation of the metric tensor:
+\begin{equation}
+  g_{mn}(x) dx^m dx^n = g_{pq}^\prime dy^p dy^q = g_{mn}(x) = \mathbf{g_{pq} \frac{\partial x^m}{\partial x^n} \frac{\partial y^p}{\partial y^q}} dy^p dy^q
+\end{equation}
+
+\paragraph{} We have two metric tensors, one with covarient and one with contravarient indices, defined as:
+\begin{equation}
+  g_{mn} g^{np} = \delta_m^p
+\end{equation}
+So, one is the inverse of the other.
+
+
+

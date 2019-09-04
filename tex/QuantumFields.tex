@@ -1,0 +1,54 @@
+\chapter{Quantum Field Theory}
+
+
+
+\section{Classical Field Theory}
+
+
+\subsection{What is a field?}
+
+A field $\phi$ is a quantity (eg. Density, Spin, Charge) defined at every point in a manifold $M$ (spacetime, Minkowski space usually).
+
+\begin{equation*}
+  \phi : M \leftarrow S
+\end{equation*}
+So the field is any function from the space to a Target Space.
+\begin{itemize}
+  \item Here $S$ can be Scalar Field, where $S = \Re$. It good for modeling Higs Boson, Charge Density, Magnetisation density, etc.
+  \item Or it can be a vector field $S = \Re^n$. It's good for modelling Pions, Elecromagnetic fields, etc.
+  \item We can also have $S = S^2$, which is the surface of a sphere, this is used for the $\sigma$-model and modelling Quantum Magnets.
+\end{itemize}
+
+We will restrict our attention to fields whose Classical Dynamics are obtained by applying Variational Principal applied to an Action Functional (Lagrangian Fields). These encode symetries well.
+
+
+\subsection{Our Lagrangian Field}
+
+We break our vector field down into several scalar fields, $\Phi_a(x)$; $a = 1,2,3\dots,N$.
+
+Our action functional involves the Lagrange density $\mathcal{L}$ which is a function of 
+\begin{equation*}
+  S(\Omega) = \int_\Omega \mathcal{L}(\partial_\mu \Phi_a) d^4x\;\;;\;\; d^4x = dx_0 dx_1 dx_2 dx_3.
+\end{equation*}
+Here $\Omega \in \mu_{1,3}$ is a measurable subset of spacetime, the region where $\mathcal{L}$ is defined.
+
+$\mathcal{L}$ is a function if $\Phi_a$, $\partial_\mu \Phi_a$, $\partial_\mu \partial_\nu \Phi_a$, and so on, but we will only take the first derivative, so:
+\begin{equation}
+  \mathcal{L} = \mathcal{L}(\Phi_a, \partial_\mu \Phi_a)
+\end{equation}
+
+We assume that this functional is stationary under small perturbations, i.e. only the second derivative varies, not till the first derivatives \danger. This puts some conditions on $\Phi_a$s.
+
+
+\subsection{Extracting Equations of Motion}
+
+\begin{equation}
+  \frac{\partial \mathcal{L}}{\partial \Phi_a} - \frac{\partial}{\partial x^\mu} \frac{\partial \mathcal{L}}{\partial (\partial_\mu \Phi_a)} = 0
+\end{equation}
+
+
+\subsection{Example: Klein Gordon Field}
+
+\begin{equation}
+  \mathcal{L} = \frac{1}{2} \dot{\Phi}^2 - \frac{1}{2} (\nabla \Phi)^2 - \frac{1}{2} \mu^2 \Phi^2
+\end{equation}

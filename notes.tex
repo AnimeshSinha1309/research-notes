@@ -1,0 +1,210 @@
+\documentclass{book}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{chemfig}
+\usepackage{mathtools}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{fourier}
+\usepackage{subcaption}
+\usepackage{multicol}
+\usepackage{paralist}
+\usepackage{tcolorbox}
+\usepackage{braket}
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{esint}
+
+\title{College Notes}
+\date{2019-01-01}
+\author{Animesh Sinha}
+
+
+\newcounter{theo}[section]\setcounter{theo}{0}
+\renewcommand{\thetheo}{\arabic{section}.\arabic{theo}}
+\newenvironment{theorem}[2][]{%
+\refstepcounter{theo}%
+\ifstrempty{#1}%
+{\mdfsetup{%
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,fill=blue!20]
+{\strut Theorem~\thetheo};}}
+}%
+{\mdfsetup{%
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,fill=blue!20]
+{\strut Theorem~\thetheo:~#1};}}%
+}%
+\mdfsetup{innertopmargin=10pt,linecolor=blue!20,%
+linewidth=2pt,topline=true,%
+frametitleaboveskip=\dimexpr-\ht\strutbox\relax
+}
+\begin{mdframed}[]\relax%
+\label{#2}}{\end{mdframed}}
+
+
+\newcounter{trk}[section]\setcounter{trk}{0}
+\renewcommand{\thetrk}{\arabic{section}.\arabic{trk}}
+\newenvironment{trick}[2][]{%
+\refstepcounter{trk}%
+\ifstrempty{#1}%
+{\mdfsetup{%
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,fill=blue!20]
+{\strut Trick~\thetrk};}}
+}%
+{\mdfsetup{%
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,fill=blue!20]
+{\strut Trick~\thetheo:~#1};}}%
+}%
+\mdfsetup{innertopmargin=10pt,linecolor=blue!20,%
+linewidth=2pt,topline=true,%
+frametitleaboveskip=\dimexpr-\ht\strutbox\relax
+}
+\begin{mdframed}[]\relax%
+\label{#2}}{\end{mdframed}}
+
+
+\newcounter{prf}[section]\setcounter{prf}{0}
+\renewcommand{\theprf}{\arabic{section}.\arabic{prf}}
+\newenvironment{proof}[2][]{%
+\refstepcounter{prf}%
+\ifstrempty{#1}%
+{\mdfsetup{%
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,fill=red!20]
+{\strut Proof~\theprf};}}
+}%
+{\mdfsetup{%
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,fill=red!20]
+{\strut Proof~\thetheo:~#1};}}%
+}%
+\mdfsetup{innertopmargin=10pt,linecolor=red!20,%
+linewidth=2pt,topline=true,%
+frametitleaboveskip=\dimexpr-\ht\strutbox\relax
+}
+\begin{mdframed}[]\relax%
+\label{#2}}{\end{mdframed}}
+
+
+\newcounter{exm}[section]\setcounter{exm}{0}
+\renewcommand{\theexm}{\arabic{section}.\arabic{exm}}
+\newenvironment{example}[2][]{%
+\refstepcounter{exm}%
+\ifstrempty{#1}%
+{\mdfsetup{%
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,fill=green!20]
+{\strut Example~\theexm};}}
+}%
+{\mdfsetup{%
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,fill=green!20]
+{\strut Example~\thetheo:~#1};}}%
+}%
+\mdfsetup{innertopmargin=10pt,linecolor=green!20,%
+linewidth=2pt,topline=true,%
+frametitleaboveskip=\dimexpr-\ht\strutbox\relax
+}
+\begin{mdframed}[]\relax%
+\label{#2}}{\end{mdframed}}
+
+
+\newcounter{def}[section]\setcounter{def}{0}
+\renewcommand{\thedef}{\arabic{section}.\arabic{def}}
+\newenvironment{definition}[2][]{%
+\refstepcounter{def}%
+\ifstrempty{#1}%
+{\mdfsetup{%
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,fill=yellow!20]
+{\strut Definition~\thedef};}}
+}%
+{\mdfsetup{%
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,fill=yellow!20]
+{\strut Definition~\thetheo:~#1};}}%
+}%
+\mdfsetup{innertopmargin=10pt,linecolor=yellow!20,%
+linewidth=2pt,topline=true,%
+frametitleaboveskip=\dimexpr-\ht\strutbox\relax
+}
+\begin{mdframed}[]\relax%
+\label{#2}}{\end{mdframed}}
+
+
+\newcounter{note}[section]\setcounter{note}{0}
+\renewcommand{\thenote}{\arabic{section}.\arabic{note}}
+\newenvironment{note}[2][]{%
+\refstepcounter{note}%
+\ifstrempty{#1}%
+{\mdfsetup{%
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,fill=pink!20]
+{\strut Note~\thenote};}}
+}%
+{\mdfsetup{%
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,fill=pink!20]
+{\strut Note~\thenote:~#1};}}%
+}%
+\mdfsetup{innertopmargin=10pt,linecolor=pink!20,%
+linewidth=2pt,topline=true,%
+frametitleaboveskip=\dimexpr-\ht\strutbox\relax
+}
+\begin{mdframed}[]\relax%
+\label{#2}}{\end{mdframed}}
+
+
+
+\let\cleardoublepage\clearpage
+
+
+\begin{document}
+\pagenumbering{arabic}
+
+
+\begin{titlepage}
+    \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+    \center
+    \textsc{\LARGE International Institute of Information Technology, Hyderabad}\\[1.5cm]
+    \includegraphics[scale=1]{img/iiit-logo.jpeg}\\[0.5cm]
+    \textsc{\Large First Year}\\[0.5cm]
+    \textsc{\large Real Analysis, Digital Systems, Dicrete Mathematics, Computer Programming}\\[0.5cm] % Minor heading such as course title
+    \HRule \\[0.4cm]
+    { \huge \bfseries College Notes}\\[0.4cm]
+    \HRule \\[1.5cm]
+    \begin{minipage}{0.4\textwidth}
+    \begin{flushleft} \large
+    \emph{Author:} Animesh Sinha
+    \end{flushleft}
+    \end{minipage}\\[2cm]
+    {\large \today}\\[2cm]
+    \vfill
+\end{titlepage}
+
+\input{tex/DeepParticle.tex}
+\input{tex/QuantumFields.tex}
+\input{tex/GeneralRelativity.tex}
+
+\end{document}
