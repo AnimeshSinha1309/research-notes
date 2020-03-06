@@ -1,0 +1,272 @@
+\chapter{Group Theory and Graphs}
+
+
+
+\section{Groups and Subgroups}
+
+\subsection{What is a Group?}
+A group is defined over a Set A and an arbitrary operation $\times$, denoted as: $\braket{A|\times}$.
+\begin{itemize}
+    \item \textbf{Closure:} If a and b are elements in A, then $a \times b$ is also in A.
+    \item \textbf{Identity:} There exists e such that $a \times e = a$.
+    \item \textbf{Invertability:} There exists $a^{-1}$ such that $a \times a^{-1} = e$.
+    \item \textbf{Associativity:} $(a \times b) \times c = a \times (b \times c)$
+\end{itemize}
+
+A Subgroup is a subset of the original group that is itself a group.
+\paragraph{One Step Subgroup Test} states that if $ab^{-1}$ is in the group H, then H is a subgroup of G.
+\paragraph{Two Step Subgroup Test} states that if $a^{-1}$ is in H whenever a is in H and $ab$ is in H for all a, b in H, then H is a subgroup of G.
+\paragraph{Finite Subgroup Test} If H is a non-empty finite subset of a group G, and H is closed under the operation G, then H is a subgroup of G.
+
+\paragraph{Operations that Hold} in groups are:
+\begin{itemize}
+    \item Uniqueness of Identity (If $ x \cdot a = x $ and $ x \cdot b = x $, $(\forall x)$, then $a = b = e$)
+    \item Uniqueness of Inverse (If $ x \cdot a = e $ and $ x \cdot b = e $, $(\exists x)$, then $a = b = x^{-1}$)
+    \item Left and Right Cancellation (If $ab = ac$ then $b = c $. If $ba = ca$ then $b = c$.)
+    \item Socks-Shoes Property ($(ab)^{-1} = b^{-1} a^{-1}$)
+\end{itemize}
+
+
+\subsection{Cayley's Table}
+
+\paragraph{Cayley's Table} is a 2-D matrix of all members of the group $a$ and $b$ on both axis and $a \cdot b$
+
+\subsection{Subgroups and GCD}
+
+\begin{theorem}[Equivalent Cyclic Subpgroups]{thm:GroupTheory-CyclicGCD}
+    Let a be an element of order n in a group and let k be a positive integer. Then 
+    \colorbox{yellow}{$ \braket{a^k} = \braket{a^{gcd(n,k)}}\;and\;|a^k| = n/gcd(n, k). $}    
+\end{theorem}
+
+\begin{proof}[Equivalent Cyclic Subpgroups]{prf:GroupTheory-CyclicGCD}
+    $(a^{gcd(n,k)})^{\alpha} = a^k$, Since gcd(n,k) divides k. Thereby $ \braket{a^{k}} \subseteq \braket{a^{gcd(n,k)}}$.
+    Also, $gcd(n,k) = \alpha n + \beta k$, so $a^{gcd(n,k)} = a^{\alpha n + \beta k} = a^{\alpha n} a^{\beta k} = e \cdot a^{\beta k}$, therefore we can state that, $\braket{a^{gcd{n,k}}} \subseteq \braket{a^k}$. So we proved that $\braket{a^k} = \braket{a^{gcd(n,k)}}$.
+    \vspace{10pt} \\ Next, using the proof in the first part, since the groups are equal their orders are the same, so
+    $|a^{k}| = |a^{gcd(n,k)}| = \frac{n}{gcd(n,k)}$, since the gcd divides n, it is the least solution to $(a^{gcd(n,k)})^x = a^n$
+\end{proof}
+
+This has the following crucial corollaries.
+\begin{itemize}
+    \item In a finite cyclic group, the order of an element divides the orderof the group.
+    \item Let $|a| = n$. Then $\braket{a^i} = \braket{a^j}$ if and only if $gcd(n, i) = gcd(n, j)$, and $|a^i| = |a^j|$ if and only if $gcd(n, i) = gcd(n, j)$.
+    \item Let $|a| = n$. Then \colorbox{yellow}{$\braket{a} = \braket{a^j}$ if and only if $gcd(n, j) = 1$}, and $|a| = |\braket{a^j}|$ if and only if $gcd(n, j) = 1$.
+    \item An integer k in $Z_n$ is a generator of $Z_n$ if and only if $gcd(n, k) = 1$.
+\end{itemize}
+These facts help us count the number of subgroups in a given set.
+
+
+\subsection{Cyclic Groups}
+
+\begin{theorem}[Fundamental Theorem of Cyclic Groups]{thm:GroupTheory-FundamentalTheoremCyclicGroups}
+    Every subgroup of a cyclic group is cyclic.
+    Moreover, if $|\braket{a}|$ = n, then the order of any subgroup of $\braket{a}$ is a divisor of n; and, for each positive divisor k of n, the group $\braket{a}$ has exactly one subgroup of order k, namely, $\braket{a^{n/k}}$.
+\end{theorem}
+
+\begin{theorem}[Number of Elements of Order D]{thm:GroupTheory-OrderD}
+    Let $G_n$ be a finite Cyclic Group of order N, if d is a positive Divisor of N, then the number of elements of order D in G of order d is $\phi(d)$. \vspace{5pt} \\ For any group (i.e. Including non-cyclic), the number of elements of order d is a multiple of $\phi(d)$.
+\end{theorem}
+
+\begin{proof}[Number of Elements of Order D]{prf:GroupTheory-OrderD}
+    If d is a divisor of n, then there is only one subgroup of order D of the group $G_n$. The elements in that group are those which are of the form $ \braket{a^x} $, such that D and x are coprime. Therefore there can only be exactly $\phi(d)$ elements that are of order d.
+    \vspace{5px} \\ If there are no elements of order D in the group, $\phi(d) | 0$. Now let $\braket{a_1}$ be a subgroup of order d, it has $\phi(d)$ elements in the subgroup of order d. So on for each $\braket{a_i}$ for all i, therefore a multiple of $\phi(d)$.
+\end{proof}
+
+
+\subsection{Abelian Groups}
+
+\begin{theorem}[Fundamental Theorem of Abelian Groups]{thm:GroupTheory-AbelianGroups}
+    Every finite Abelian group is a direct product of cyclic groups of prime order power.
+    Moreover, the number of terms in the product and the orders fo the cyclic groups are 
+    uniquely determined by the group. This is valid \textbf{upto isomorphism}.
+\end{theorem}
+
+\begin{proof}[Fundamental Theorem of Abelian Groups]{prf:GroupTheory-AbelianGroups}
+    \paragraph{Lemma 1} Let G be a finite Abelian Group of order $p^n m$, where p is a prime that does not divide m. Then $ G = H \times K $, where $ H = \{ x \in G | x^{p^n} = e \} $ and $ K = \{ x \in G | x^{m} = e \} $. Moreover $ |H| = p^n $
+    \paragraph{Lemma 2} Let G be an Abelian group of prime-power order and let a be an element of maximum order in G. Then G can be written in the form $\braket{a} = K$
+    \paragraph{Lemma 3} A finite Abelian group of prime-power order is an internal direct product of cyclic groups.
+    \paragraph{Lemma 4} G be a finite Abelian group of prime-power order. If $ G = H_1 \times H_2 \times ... \times H_m$ and $G = K_1 \times K_2 \times ... \times K_n $, where the H’s and K’s are nontrivial cyclic subgroups with $|H_1| \geq |H_2| \geq ... \geq |H_m| $ and $ |K_1| \geq |K_2| \geq ... \geq |K_n| $, then $m = n$ and $|H_i| = |K_i| \; (\forall i)$.
+\end{proof}
+
+\begin{example}[Using Cardinality and Generators]{exm:GroupTheory-AbelianGroups}
+    \textbf{Prove that every abelian group of order that is a product of primes is also cyclic.}
+    Given any abelian Group of order $ p \cdot q $. If there is no prime such that 
+\end{example}
+
+
+
+\section{Special Groups and Their Properties}
+
+\subsection{Permutation Groups}
+
+\paragraph{A Dihedral Group ($D_n$)} is a group of all permutations of a n-sided Regular
+Polygon. The number of elements in this group is $2^n$.
+
+\begin{definition}[Permutation Groups]{def:GroupTheory-PermutationGroups}
+Permutation Groups are a group of permutations, where a permutation is a
+bijective function from a group to itself. Eg.
+\begin{equation}
+    Example Permutation = 
+    \begin{bmatrix}
+        A_0 & A_1 & A_2 & A_3 & A_4 & ... \\
+        \alpha(A_0) & \alpha(A_1) & \alpha(A_2) & \alpha(A_3) & \alpha(A_4) & ... 
+    \end{bmatrix}
+\end{equation}
+\end{definition}
+
+\paragraph{Disjoint Cycle Notation} Any permutation can be written as a product of disjoint cycles.
+Each cyclic subgroup is expressed as a separate disjoint cycle.
+\begin{equation}
+    (1,3)(2,7)(4,5,6)(8) =
+    \begin{bmatrix} 
+        1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\ 
+        3 & 7 & 1 & 5 & 6 & 4 & 2 & 8 
+    \end{bmatrix}
+\end{equation}
+
+These Permutation Cycles can be multiplied together (that is operated by the Group Operator, Function Composition). eg.
+\begin{eqnarray*}
+    P_1 \times P_2 
+    & = & (1,3)(2,7)(4,5,6)(8) \times (1,2,3,7)(6,4,8)(5) \\
+    & = & (1,3)(2,7)(4,5,6)(8)(1,2,3,7)(6,4,8)(5) \\
+    & = & (1,7,3,2)(4,8)(5,6)
+\end{eqnarray*}
+We go from Right to Left when multiplying, as function composition applies from Right to left.
+We see that $1 \rightarrow 2 \rightarrow 7$, $7 \rightarrow 1 \rightarrow 3$, $3 \rightarrow 7 \rightarrow 2$, $2 \rightarrow 3 \rightarrow 1$ so we get the cycle (1,3,7,2). We continue in this fashion to multiply.
+By Convention, we can choose not to write down single element cycles.
+
+\paragraph{A Symetric Group $(S_n)$} is a group of all the permutations over the operator Function Composition. There are n! elements in $S_n$
+\paragraph{Every Cycle can be written as a product of Disjoint Cycles} Each disjoint cycle is a permutation, and it can always be written as a composition of two or more permutations. Also, any \textbf{disjoint cycles can always commute}.
+\vspace{20px}
+
+\paragraph{Order of a permutation} is defined as the Least Common Multiple of the lengths of the disjoint cycles.
+\paragraph{Every Cycle can be Written as a Product of 2 cycles} Any permutation is a composition of flips. Also by direct computation, we can prove this. Here is an example: (01234)(56)(789) = (43)(42)(41)(40)(56)(97)(98)
+\\ The representation of any cycle as a composition of 2 cycles can be classified as even or odd, i.e. any cycle C will require either even number of 2-cycles in all possible breakdowns or odd 2-cycles in all possible breakdowns, but it can never be that some 2-cycle decompositions are odd order and some are even order.
+
+
+\subsection{Cosets and Lagrange's Theorem}
+
+\paragraph{A Coset of a subgroup H in group G} is the set $\{ah\;|\;H \in a\}$ - Left Coset, or $\{ha\;|\;H \in a\}$ - Right Coset.
+
+\paragraph{Properties of Cosets} of subgroup H in group G are:
+\begin{enumerate}
+    \item $\mathbf{a \in aH}$, since $e \in H$, so $ae \in aH$.
+    \item \colorbox{green}{$\mathbf{aH = H}$ \textbf{iff} $\mathbf{a \in H}$}, If $ah = H$ then $a = ae \in aH = H$, Also if $a \in H$ then $aH \subset H$ due to closure, $H \subset aH$ as $h = eh = aa^{-1}h = a(a^{-1}h) \in aH$, as $a^{-1}$ is in H (invertability of a in H and then closure).
+    \item $\mathbf{(ab)H = a(bH)}$ \textbf{and} $\mathbf{H(ab) = (Ha)b}$, as Associativity holds.
+    \item \colorbox{green}{$\mathbf{aH = bH}$ \textbf{iff} $\mathbf{a \in bH}$}, as if $aH = bH$ then $a = ae \in aH = bH$. The other way, if $a \in bH$ then $aH = (bh)H = b(hH) = bH$ so they are equal sets.
+    \item \colorbox{yellow}{$\mathbf{aH = bH}$ \textbf{or} $\mathbf{aH \cap bH = \Phi}$}, Using Property 4, if there exists c in the intersection, then $c \in aH$ and $c \in bH$, so $aH = cH = bH$ thereby $aH = bH$.
+    \item $\mathbf{aH = bH}$ \textbf{iff} $\mathbf{a^{-1}b \in H}$, If there is $c \in aH,bH$ so we can say that $a^{-1}c \in H$ and $b^{-1}c \in H \iff c^{-1}b \in H$ due to invertability. Multiplying both elements in the we get $a^{-1}c \cdot c^{-1}b = a^{-1}b \in H$, again by Closure.
+    \item \colorbox{yellow}{$\mathbf{|aH| = |bH|}$}, We can show a one-one map $aH \rightarrow bH$ using the cancellation property, i.e. $ah = bh \; (\forall h \in H)$.
+    \item $\mathbf{aH = Ha}$ \textbf{iff} $\mathbf{H = aHa^{-1}}$, right-multiply both sides by $a^{-1}$, so $aHa^{-1} = Haa^{-1} = H$.
+    \item \textbf{aH is a subgroup of G, iff} $\mathbf{a \in H}$, aH must have identity e to be a subgroup, since $aH \cap eH \neq \phi \implies aH = eH = H$. By Property 2, $a \in H$. Conversely if $a \in H$ then $aH = H$ is a subgroup.
+\end{enumerate}
+
+\begin{theorem}[Lagrange's Theorem]{thm:GroupTheory-LagrangeTheorem}
+    If G is a finite group and H is a subgroup of G, then $|H|$ divides $|G|$. Moreover, the number of distinct (loft/right) cosets of H in G are $|G|/|H|$.
+\end{theorem}
+\begin{proof}[Lagrange's Theorem]{prf:GroupTheory-LagrangeTheorem}
+    Using the Properties proven above, $|aH| = |bH| = |eH| = |H|$ and $aH = bH$ or $aH \cap bH = \phi$, therefore $|G|$ is divisible by $|H|$.
+\end{proof}
+
+\paragraph{} The fruitfulness of cosets, when applied to Permutation Groups is displayed here:
+\paragraph{Stabilizer of a Point:} Let G be a group of permutations of Set S. For each i in S, let $stab_G(i) = \{\phi \in G \;|\; \phi(i) = i\}$. We call $stab_G(i)$ the stabilizer of i in G.
+\paragraph{Orbit of a Point:} Let G be a group of permutations of a set S. For each s in S, let $orb_G(s) = \{\phi(s) \;|\; \phi \in G\}$. The set $orb_G(s)$ is a subset of S called the orbit of s under G.
+\paragraph{Eg.:} G = \{(1),(132)(465)(78),(132)(465),(123)(456),(123)(456)(78),(78)\}
+\begin{multicols}{2}[]
+    \textbf{Orbits of G}\\
+    $orb_G(1)$ = \{1,3,2\}\\
+    $orb_G(2)$ = \{2,1,3\}\\
+    $orb_G(4)$ = \{4,6,5\}\\
+    $orb_G(7)$ = \{7,8\}\\
+    \textbf{Stabilizers of G}\\
+    $stab_G(1)$ = \{(1),(78)\}\\
+    $stab_G(2)$ = \{(1),(78)\}\\
+    $stab_G(4)$ = \{(1),(78)\}\\
+    $stab_G(7)$ = \{(1),(132)(465),(123)(456)\}
+\end{multicols}
+\paragraph{Orbit-Stabilizer Theorem} states that $|orb_G(i)| \cdot |stab_G(i)| = |G| \; (\forall i)$.
+
+
+\subsection{Normal and Factor Subgroups}
+
+\paragraph{Normal Subgroups} are subgroups H of group G, if $aH = Ha \;(\forall A \in G)$, written as $H \lhd G$. i.e., $ah = h^\prime a$, the commutations are fudged a bit, when commuting we are allowed to use a different elements from H.
+\\ \textbf{Normal Subgroup Test:} A subgroup H of G is normal in G if and only if $xHx^{-1} \subseteq H \;(\forall x \in G)$.
+\paragraph{Factor Groups} (or Quotient Groups) are the groups, such that H is a normal Subgroup of G, $G/H = \braket{\{aH\;|\;a \in G\}\;||\;(aH)(bH) = abH}$. This is because the normal subgroups are such that their left or right cosets are themselves subgroups. The operation is the composition of the operation that generated the cosets.
+\vspace{5px} \paragraph{Internal Direct Product:} We say that G is the internal direct product of H and K and write $G = H \times K$ if H and K are normal subgroups of G, $G = HK$, $H \cap K = \{e\}$
+
+
+
+\section{Isomorphism and Homomorphism}
+
+\subsection{Isomorphisms}
+
+\begin{definition}[Isomorphism]{}
+A Isomorphism is a bijective mapping from one group onto another wherein if $ a \times b = c $ then $ \Phi(a) \times \Phi(b) = \Phi(c) $. That is the mapping preserve the result of every operation, and every inverse.
+\end{definition}
+
+\paragraph{Automorphism} is an Isomorphism that exists from a group onto itself. \\
+\vspace{10px}
+\begin{example}[Disproving Isomorphisms]{exm:GroupTheory-DisprovingIsomorphisms}
+    \textbf{The Set of Real numbers can never be isomorphic to proper subset of itself under the operation addition.}
+    \paragraph{} The homomorphisms of real numbers to its proper subsets under addition are highly constrained: $ \phi(a) + \phi(a) = \phi(2a) \implies \phi(m) = qm $. Therefore there can only be a multiplicative map that holds the homomorphism.
+    \paragraph{} Any subgroup of rational numbers can be generated by a subset of the series if prime inverses: $\{\frac{1}{2},\frac{1}{3},\frac{1}{5},\frac{1}{7},\frac{1}{11},\frac{1}{13},...\}$, the set of all prime denominators. Since both of our subgroups are generated by a subset of this set, there must exist a map, just a multiplicative factor, $\phi$, from $A \rightarrow B$.
+    This never exists, since there is no such factor that maps the set of prime numbers to another set of prime numbers (or the reciprocals thereof).
+\end{example}
+\vspace{10px}
+\begin{example}[Proving Isomorphisms]{exm:GroupTheory-ProvingIsomorphisms}
+    \textbf{From $\braket{\mathbb{R} | +}$ to $\braket{\mathbb{R} | \times}$, show an isomorphism exists}.
+    \paragraph{} We have $\phi(x) = 2^x$, the mapping is bijective, and $\phi(x) \times \phi(y) = 2^x \times 2^y = 2^{x+y} = \phi(x+y)$
+\end{example}
+
+\paragraph{Cayley's Theorem} states that every group is isomorphic to a group of permutations.
+
+
+\subsection{Homomorphism}
+
+\begin{definition}[Group Homomorphism]
+    A Homomorphism $\phi$ is a mapping from a group G to $\bar{G}$ is a mapping that preserves the group operation, i.e. $ \phi(ab) = \phi(a)\phi(b) \; (\forall\;a,b \in G)$. \\ 
+    (The mapping may not be bijective, as opposed to Isomorphism)
+\end{definition}
+
+\begin{definition}[Kernel of a Homomorphism]
+    The kernel of a homomorphism $\phi$ from a group G to a group with identity e is the set $\{x \in G\;|\;\phi(x) = e\}$. The kernel of $\phi$ is denoted by $Ker \phi$. \\
+    (All elements in G that map to the identity, for isomorphism it's just the identity element - trivial subgroup)
+\end{definition}
+
+
+\section{Rings and Fields}
+
+\subsection{Rings}
+
+\paragraph{A Ring is a set with 2 binary operations on it} 
+such that the following properties hold true. (Z is a arbitrary set, and 
+$+$ and $\times$ are arbitrary operations in $\braket{ Z | +, \times }$, 
+also $+$ is the first and $\times$ is second operation on the ring).
+\begin{itemize}
+    \item Associativity over +: (a + b) + c = a + (b + c)
+    \item Commutativity over +: a + b = b + a
+    \item Identity over +: a + 0 = a must exist for some 0
+    \item Invertable over +: a + (-a) = 0 must exist for some -a
+    \item Associativity over $\times$: $a \times (b \times c) = (a \times b) \times c$.
+    \item Distributivity of $\times$ over $+$: $a \times (b + c) = (b + c) \times a = (a \times b) + (a \times c)$.
+\end{itemize}
+In summary, A Ring is a Abelian Group over +, and Associative and Distributive over $\times$.
+
+\paragraph{A subring S of a ring R} is the same operations defined over a subset of elements such that they in themselves form a ring.
+\paragraph{Subring Test} A non-empty subset of a ring is a subring if it is closed unber subtraction ($a - b$) and multiplication ($a \times b$).
+
+
+\subsection{The Integer Domain}
+
+\paragraph{Rings were invented to abstract the algebraic properties} of Integers. However they lose essential features in this abstraction, those of \textbf{Existance of Unity, Commutativity, and Cancellation}
+\paragraph{Zero Divisors} are elements of a Commutative Ring such that there is a non-zero element $b \in R$ with $ab = 0$.
+\paragraph{Integral Domain} is a commutative ring with unity and no zero-divisors. (It may also be defined as a Commutative Ring with Cancellation, Equivalent)
+
+
+\subsection{Fields}
+
+\paragraph{A Field} is a commutative ring with unity in which every nonzero element is a unit (i.e. Invertable).
+\\ Every finite integral domain is a field. (Finite Order: So every element is invertible)
+
+\paragraph{Characteristic of a Ring} is the least positive integer n such that nx = 0 for all x in the Ring. If no such integer exists then it is 0.
+\\ If R is a ring with unity (1), then the characteristic of n is the order of 1, unless its $\infty$ in which case characteristic is 0.
+\\ Characteristic of an integral domain can only be 0 or prime. Its because if the field is finite, then $0 = n \cdot 1 = (p \cdot 1)(q \cdot 1)$. So, either $p \cdot 1 = 0$, or $q \cdot 1 = 0$. Since p or q are smaller than n, then p or q is the characteristic, not n. 

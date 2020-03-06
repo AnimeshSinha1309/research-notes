@@ -124,19 +124,17 @@ This is the first detector because it does not affect the flight of the particle
   \begin{subfigure}[b]{0.45\textwidth}
       \includegraphics[width=\linewidth]{img/hadron/particleid-chernekov-wavefronts.png}
       \caption{Chernekov Simulation}
-      \label{fig:particleid-chernekov-wavefronts}
   \end{subfigure}
   \begin{subfigure}[b]{0.30\textwidth}
       \includegraphics[width=\linewidth]{img/hadron/particleid-cherenkov-angles.png}
       \caption{Chernekov Angles}
-      \label{fig:particleid-cherenkov-angles}
   \end{subfigure}
   \begin{subfigure}[b]{0.45\textwidth}
     \includegraphics[width=\linewidth]{img/hadron/particleid-chernekov-graph.png}
     \caption{Chernekov Radiation Graphs}
-    \label{fig:particleid-cherenkov-angles}
-\end{subfigure}
-\caption{Registers in Processor Design}
+  \end{subfigure}
+  \label{fig:particleid-chernekov-wavefronts}
+  \caption{Registers in Processor Design}
 \end{figure}
 
 Here is the angle of the Chernokov radiation, derivable using simple geometric means and some special relativity in terms of the momentum.
@@ -150,7 +148,73 @@ From the figure above, and the equation for it's analytical feel, that we can fi
 
 % ISSUE: 5:40 Kaon and Pion rings.
 
-\subsection{Ring Imaging Chernekov Detector (RICH)}
+\subsection{Calorimeter - Electromagnetic and Hadronic}
 
-Electromagnetic calorimeter - stops everything other than muons and quarks.
-Hadron calorimeter - stops the quarks.
+Electromagnetic stops all but than muons and quarks. Hadron calorimeter stops the quarks.
+
+\begin{equation}
+  E_C = E_0 e^{\frac{x}{X_0}}
+\end{equation}
+\begin{equation}
+  X_{max} = X_0 ln(\frac{E_0}{E_c})
+\end{equation}
+\begin{equation}
+  N = E_0 / E_c
+\end{equation}
+
+After this we have crystals and scintillation counters, that measure the count and energy of particles, The electrons and photons, and since we measure energy, we already have momenta from the tracking system., this gives us the Mass, so we can identify them.
+
+\subsection{Muon Chambers}
+
+Muons do not interact well with matter. So we have multiple layers of metal to slow down the muons, they activate the chambers, we will extrapolate the data to get which particles in the tracking system were muons. We can also get the energy from how far they go in the muon chambers.
+
+
+\subsection{How to make a classifier uniform}
+
+\subsubsection{The problem}
+\begin{eqnarray}
+1 - false\;positive\;rate &=& background\;rejection \\
+true\;positive\;rate &=& signal\;efficiency
+\end{eqnarray}
+We want to have no dependence of the ROC AUC on all the momenta.
+
+\begin{eqnarray}
+  L_{ada} &=& \Sigma e^{-\gamma_i S_i} \\
+  L_{flat} &=& \Sigma_b w_b \int |F_b(s) - F(s)|^2 ds \\
+  L_{adaflat} &=& L_{ada} + \alpha L_{flat}
+\end{eqnarray}
+This is imposing an additional loss over the ADA boost function to make it less dependent on the momentum, alpha is a parameter we can tune to weight flatness over fit quality.
+
+\subsection{Adversarial Neural Networks}
+
+Minimizing dependencies on Mass, Momentum, etc. can also be done using adversarial neural networks. One network performs classification, and feeds it's output to the other which tries to guess the momentum/mass from the output, if it can do this well, the model is bad, i.e. not flat. So, our new loss is $Loss_{classification} + f(Loss_{adversarial})$.
+
+
+\section {Discovering New Physics}
+
+% TODO: Learn about different classes of Particles in Standard model, SUSY Particles
+% Particle-Data-Group has breaking of all particles
+
+\subsection{NoEther's theorem}
+
+NoEther's theorem claims that the conservation laws we have are based on certain symetries.
+Here is a list of some of them.
+\begin{itemize}
+  \item Time Inversion: Energy
+  \item Space Translation: Linear momentum
+  \item Space Rotation: Angular momentum
+  \item Charge Conjugation and Parity: Time Isotropy
+  \item Charge, Lepton Number: Gauge Symetries 
+\end{itemize}
+
+\subsection{}
+
+CvM test 
+\begin{equation}
+  CvM = \Sigma_{region} \int |F_{region}(s) - F_{global}(s)|^2 dF_{global}(S)
+\end{equation}
+
+% UBoost BDT
+
+\subsection{Doping}
+

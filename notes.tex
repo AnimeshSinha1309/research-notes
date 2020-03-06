@@ -14,6 +14,7 @@
 \usepackage{multicol}
 \usepackage{paralist}
 \usepackage{tcolorbox}
+\usepackage{tikz}
 \usepackage{braket}
 \usepackage[framemethod=TikZ]{mdframed}
 \usepackage[english]{babel}
@@ -66,7 +67,7 @@ frametitle={%
 frametitle={%
 \tikz[baseline=(current bounding box.east),outer sep=0pt]
 \node[anchor=east,rectangle,fill=blue!20]
-{\strut Trick~\thetheo:~#1};}}%
+{\strut Trick~\thetrk:~#1};}}%
 }%
 \mdfsetup{innertopmargin=10pt,linecolor=blue!20,%
 linewidth=2pt,topline=true,%
@@ -91,7 +92,7 @@ frametitle={%
 frametitle={%
 \tikz[baseline=(current bounding box.east),outer sep=0pt]
 \node[anchor=east,rectangle,fill=red!20]
-{\strut Proof~\thetheo:~#1};}}%
+{\strut Proof~\theprf:~#1};}}%
 }%
 \mdfsetup{innertopmargin=10pt,linecolor=red!20,%
 linewidth=2pt,topline=true,%
@@ -116,7 +117,7 @@ frametitle={%
 frametitle={%
 \tikz[baseline=(current bounding box.east),outer sep=0pt]
 \node[anchor=east,rectangle,fill=green!20]
-{\strut Example~\thetheo:~#1};}}%
+{\strut Example~\theexm:~#1};}}%
 }%
 \mdfsetup{innertopmargin=10pt,linecolor=green!20,%
 linewidth=2pt,topline=true,%
@@ -141,7 +142,7 @@ frametitle={%
 frametitle={%
 \tikz[baseline=(current bounding box.east),outer sep=0pt]
 \node[anchor=east,rectangle,fill=yellow!20]
-{\strut Definition~\thetheo:~#1};}}%
+{\strut Definition~\thedef:~#1};}}%
 }%
 \mdfsetup{innertopmargin=10pt,linecolor=yellow!20,%
 linewidth=2pt,topline=true,%
@@ -203,8 +204,7 @@ frametitleaboveskip=\dimexpr-\ht\strutbox\relax
     \vfill
 \end{titlepage}
 
-\input{tex/DeepParticle.tex}
-\input{tex/QuantumFields.tex}
-\input{tex/GeneralRelativity.tex}
+\input{tex/GroupTheory.tex}
+\input{tex/ClassicalMechanics.tex}
 
 \end{document}

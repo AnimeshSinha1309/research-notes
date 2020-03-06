@@ -100,3 +100,35 @@ So, one is the inverse of the other.
 
 
 
+\section{Cartesian Geometry}
+
+
+\subsection{Flatness of a Space}
+
+If $g_mn \neq \delta_mn$ (metric tensor), this does not mean that the space is flat. This just means we have bad coordinates. Let's say there is some quantity Riemann $R$.
+
+In Riemannian Geometry, all lengths are positive, all of their squares are also positive. Equivalently, the metric tensor is positive definite, i.e. all it's eigen values are positive.
+
+
+\subsection{Gaussian Normal Coordinates}
+
+At every point, we can chose Gaussian Normal Coordinates (unique upto all rotations), such that $g_{mn} = \delta_{mn}$ at $r = r_0$. Also we can chose $\frac{\partial g_{mn}}{\partial x^r} = 0$, i.e. our metric can be chosen to have first derivative 0. We can only make higher derivatives 0 iff the space is flat, but not otherwise $\frac{\partial^2 g_{mn}}{\partial x^r \partial x^s} \neq 0$.
+
+This can always be done since $x^m = y^m + c^m_{nr} y^n y^r$ is the most general quadratic, and it contains 40 free constants in 4-spaces, since all of $c^m_{nr}$ are all free. But this only allows us to set the derivatives of all 10 variables to 0 with respect to each of the 4 variables, so we have derivative to first order is 0.
+
+\textbf{The meeaning of Covartient derivatives is that they are all 0 in Gaussian Normal Coordinates, and then making Tensors out of them}.
+\begin{eqnarray}
+  D_s g_mn &=& \frac{\partial g_mn}{\partial x^s} - \Gamma^{t}_{sm} g_{tn} - \Gamma^{t}_{sn} g_{mt} = 0 \\
+  D_m g_sn &=& \frac{\partial g_sn}{\partial x^m} - \Gamma^{t}_{sm} g_{tn} - \Gamma^{t}_{mn} g_{st} = 0 \\
+  D_n g_sm &=& \frac{\partial g_sm}{\partial x^n} - \Gamma^{t}_{sn} g_{tm} - \Gamma^{t}_{mn} g_{st} = 0 \\
+  \Gamma^{t}_{mn} &=& \frac{1}{2} [\partial_n g_{sm} + \partial_m g_{sn} + \partial_s g_{mn}]
+\end{eqnarray}
+We got the last equation from (1) + (2) - (3), and so we have the value of the Cristophel symbols. They can be 0 in one frame and non-zero in another, so we go back to the tensor frame after doing the derivatives.
+
+
+
+\section{Starting off with Gravitation}
+
+\begin{equation}
+  D_M V^n = \frac{\partial V^n}{\partial x^m} + \Gamma_{mn}^{r} V^r
+\end{equation}
