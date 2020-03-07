@@ -22,10 +22,45 @@
 \usepackage[colorinlistoftodos]{todonotes}
 \usepackage{esint}
 
-\title{College Notes}
-\date{2019-01-01}
+\title{Research Notes}
+\date{\today}
 \author{Animesh Sinha}
 
+\lstdefinestyle{shared}{
+    belowcaptionskip=1\baselineskip,
+    breaklines=true,
+    xleftmargin=\parindent,
+    showstringspaces=false,
+    basicstyle=\fontsize{10}{6}\ttfamily,
+}
+\lstdefinestyle{cpp}{
+	style=shared,
+    language=C++,
+    keywordstyle=\bfseries\color{green!40!black},
+    commentstyle=\itshape\color{red!80!black},
+    identifierstyle=\color{blue},
+    stringstyle=\color{purple!40!black},
+}
+\lstdefinestyle{java}{
+    style=shared,
+    language=Java,
+    keywordstyle=\bfseries\color{green!40!black},
+    commentstyle=\itshape\color{purple!40!black},
+    identifierstyle=\color{blue},
+    stringstyle=\color{orange},
+}
+\lstdefinestyle{py}{
+    style=shared,
+    language=Python,
+    keywordstyle=\bfseries\color{green!40!black},
+    commentstyle=\itshape\color{purple!40!black},
+    identifierstyle=\color{blue},
+    stringstyle=\color{orange},
+}
+\lstdefinestyle{txt}{
+    style=shared,
+}
+\lstset{escapechar=@}
 
 \newcounter{theo}[section]\setcounter{theo}{0}
 \renewcommand{\thetheo}{\arabic{section}.\arabic{theo}}
@@ -190,21 +225,22 @@ frametitleaboveskip=\dimexpr-\ht\strutbox\relax
     \center
     \textsc{\LARGE International Institute of Information Technology, Hyderabad}\\[1.5cm]
     \includegraphics[scale=1]{img/iiit-logo.jpeg}\\[0.5cm]
-    \textsc{\Large First Year}\\[0.5cm]
-    \textsc{\large Real Analysis, Digital Systems, Dicrete Mathematics, Computer Programming}\\[0.5cm] % Minor heading such as course title
+    \textsc{\Large Machine Learning, Quantum Computation}\\[0.5cm]
+    \textsc{\large Machine Learning and Physics in the vein of our primary work}\\[0.5cm] % Minor heading such as course title
     \HRule \\[0.4cm]
-    { \huge \bfseries College Notes}\\[0.4cm]
+    { \huge \bfseries Research Notes}\\[0.4cm]
     \HRule \\[1.5cm]
     \begin{minipage}{0.4\textwidth}
-    \begin{flushleft} \large
-    \emph{Author:} Animesh Sinha
-    \end{flushleft}
+        \begin{flushleft} \large
+            \emph{Author:} Animesh Sinha
+        \end{flushleft}
     \end{minipage}\\[2cm]
     {\large \today}\\[2cm]
     \vfill
 \end{titlepage}
 
-\input{tex/GroupTheory.tex}
-\input{tex/ClassicalMechanics.tex}
+\input{tex/ml/BasicArchitectures.tex}
+\input{tex/math/GroupTheory.tex}
+\input{tex/particle/DeepParticle.tex}
 
 \end{document}

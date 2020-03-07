@@ -1,0 +1,10 @@
+# Editor Directories
+.vscode/
+.idea/
+
+# LaTeX files
+notebook.aux
+notebook.fdb_latexmk
+notebook.fls
+notebook.log
+notebook.synctex.gz

@@ -1,0 +1,46 @@
+\chapter{Basic Neural Network Architectures in Keras}
+
+\section{Common Code for Neural Nets}
+
+
+\subsection{Train models with Saved intermediates}
+
+
+Following is the basic code to run when training the neural Network.
+
+\begin{lstlisting}[style=py]
+model.fit(x=X_train, y=X_train, epochs=25,
+validation_data=[X_validation, Y_validation],
+callbacks=[keras_utils.ModelSaveCallback(model_filename),
+        keras_utils.TqdmProgressCallback()],
+verbose=0,
+initial_epoch=last_finished_epoch or 0)
+\end{lstlisting}
+
+And this is the code to load a presaved checkpoint of the model and start traininf from the last completed epoch. The keras\_utils file is available in the snippets, and makes these callbacks available.
+
+\begin{lstlisting}[style=py]
+def load_checkpoint(last_epoch)
+    model_filename = 'model.{0:03d}.hdf5'
+    last_finished_epoch = None
+    if last_epoch is not None:
+        s = keras_utils.reset_tf_session()
+        last_finished_epoch = 4
+        model = keras.models.load_model(model_filename.format(last_finished_epoch))
+\end{lstlisting}
+
+Following this, we always save our weights in a file, and then load from it, as follows:
+\begin{lstlisting}[style=py]
+encoder.save_weights("encoder.h5")
+decoder.save_weights("decoder.h5")
+\end{lstlisting}
+
+
+
+\section{AutoEncoders}
+
+\subsection{Convolutional Autoencoders}
+
+Here is the code for the setting up a Convolutional AutoEncoders. Follows a 4 layer Conv-Pool and then 1 Dense layer architecture to encode, then a dense layer followed by Transpose Convolutional layers to decode.
+
+\lstinputlisting[style=py]{snippets/ml_architectures/convolutional_autoencoder.py}
