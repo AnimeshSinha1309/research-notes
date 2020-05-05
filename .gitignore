@@ -8,3 +8,8 @@ notebook.fdb_latexmk
 notebook.fls
 notebook.log
 notebook.synctex.gz
+notebook.bbl
+notebook.blg
+
+# Python files
+__pycache__/
