@@ -1,0 +1,13 @@
+\chapter{NLP tricks}
+
+\section{What approach to use}
+
+When dataset is small (\~ 600,000 samples), bag of words or ngrams tf-idf works really well. For larger datasets (> 1,000,000 samples), word-level LSTM or character level convolutional models work quite nicely.
+
+\section{Character level convolutional models}
+
+This basically involves us applying several 1dconv-pool layers on top of a one-hot matrix of input sentence. This is similar to learning a language from scratch. Each 1dconv-pool layer learns some interesting feature of the previous layer (just like in images).
+
+\section{Neural network on word embeddings}
+
+This works by training 1d conv filters on the matrix of embedding matrix of a given sentene.
