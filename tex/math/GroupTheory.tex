@@ -33,12 +33,12 @@ A Subgroup is a subset of the original group that is itself a group.
 
 \subsection{Subgroups and GCD}
 
-\begin{theorem}[Equivalent Cyclic Subpgroups]{thm:GroupTheory-CyclicGCD}
-    Let a be an element of order n in a group and let k be a positive integer. Then 
-    \colorbox{yellow}{$ \braket{a^k} = \braket{a^{gcd(n,k)}}\;and\;|a^k| = n/gcd(n, k). $}    
+\begin{theorem}[Equivalent Cyclic Subpgroups]{thm:groups-cyclic-gcd}
+    Let a be an element of order n in a group and let k be a positive integer. Then
+    \colorbox{yellow}{$ \braket{a^k} = \braket{a^{gcd(n,k)}}\;and\;|a^k| = n/gcd(n, k). $}
 \end{theorem}
 
-\begin{proof}[Equivalent Cyclic Subpgroups]{prf:GroupTheory-CyclicGCD}
+\begin{proof}[Equivalent Cyclic Subpgroups]{prf:groups-cyclic-gcd}
     $(a^{gcd(n,k)})^{\alpha} = a^k$, Since gcd(n,k) divides k. Thereby $ \braket{a^{k}} \subseteq \braket{a^{gcd(n,k)}}$.
     Also, $gcd(n,k) = \alpha n + \beta k$, so $a^{gcd(n,k)} = a^{\alpha n + \beta k} = a^{\alpha n} a^{\beta k} = e \cdot a^{\beta k}$, therefore we can state that, $\braket{a^{gcd{n,k}}} \subseteq \braket{a^k}$. So we proved that $\braket{a^k} = \braket{a^{gcd(n,k)}}$.
     \vspace{10pt} \\ Next, using the proof in the first part, since the groups are equal their orders are the same, so
@@ -57,16 +57,16 @@ These facts help us count the number of subgroups in a given set.
 
 \subsection{Cyclic Groups}
 
-\begin{theorem}[Fundamental Theorem of Cyclic Groups]{thm:GroupTheory-FundamentalTheoremCyclicGroups}
+\begin{theorem}[Fundamental Theorem of Cyclic Groups]{thm:groups-FundamentalTheoremCyclicGroups}
     Every subgroup of a cyclic group is cyclic.
     Moreover, if $|\braket{a}|$ = n, then the order of any subgroup of $\braket{a}$ is a divisor of n; and, for each positive divisor k of n, the group $\braket{a}$ has exactly one subgroup of order k, namely, $\braket{a^{n/k}}$.
 \end{theorem}
 
-\begin{theorem}[Number of Elements of Order D]{thm:GroupTheory-OrderD}
+\begin{theorem}[Number of Elements of Order D]{thm:groups-OrderD}
     Let $G_n$ be a finite Cyclic Group of order N, if d is a positive Divisor of N, then the number of elements of order D in G of order d is $\phi(d)$. \vspace{5pt} \\ For any group (i.e. Including non-cyclic), the number of elements of order d is a multiple of $\phi(d)$.
 \end{theorem}
 
-\begin{proof}[Number of Elements of Order D]{prf:GroupTheory-OrderD}
+\begin{proof}[Number of Elements of Order D]{prf:groups-OrderD}
     If d is a divisor of n, then there is only one subgroup of order D of the group $G_n$. The elements in that group are those which are of the form $ \braket{a^x} $, such that D and x are coprime. Therefore there can only be exactly $\phi(d)$ elements that are of order d.
     \vspace{5px} \\ If there are no elements of order D in the group, $\phi(d) | 0$. Now let $\braket{a_1}$ be a subgroup of order d, it has $\phi(d)$ elements in the subgroup of order d. So on for each $\braket{a_i}$ for all i, therefore a multiple of $\phi(d)$.
 \end{proof}
@@ -74,22 +74,20 @@ These facts help us count the number of subgroups in a given set.
 
 \subsection{Abelian Groups}
 
-\begin{theorem}[Fundamental Theorem of Abelian Groups]{thm:GroupTheory-AbelianGroups}
-    Every finite Abelian group is a direct product of cyclic groups of prime order power.
-    Moreover, the number of terms in the product and the orders fo the cyclic groups are 
-    uniquely determined by the group. This is valid \textbf{upto isomorphism}.
+\begin{theorem}[Fundamental Theorem of Abelian Groups]{thm:groups-abelian-groups}
+    Every finite Abelian group is a direct product of cyclic groups of prime order power. Moreover, the number of terms in the product and the orders fo the cyclic groups are uniquely determined by the group. This is valid \textbf{upto isomorphism}.
 \end{theorem}
 
-\begin{proof}[Fundamental Theorem of Abelian Groups]{prf:GroupTheory-AbelianGroups}
+\begin{proof}[Fundamental Theorem of Abelian Groups]{prf:groups-abelian-groups}
     \paragraph{Lemma 1} Let G be a finite Abelian Group of order $p^n m$, where p is a prime that does not divide m. Then $ G = H \times K $, where $ H = \{ x \in G | x^{p^n} = e \} $ and $ K = \{ x \in G | x^{m} = e \} $. Moreover $ |H| = p^n $
     \paragraph{Lemma 2} Let G be an Abelian group of prime-power order and let a be an element of maximum order in G. Then G can be written in the form $\braket{a} = K$
     \paragraph{Lemma 3} A finite Abelian group of prime-power order is an internal direct product of cyclic groups.
     \paragraph{Lemma 4} G be a finite Abelian group of prime-power order. If $ G = H_1 \times H_2 \times ... \times H_m$ and $G = K_1 \times K_2 \times ... \times K_n $, where the H’s and K’s are nontrivial cyclic subgroups with $|H_1| \geq |H_2| \geq ... \geq |H_m| $ and $ |K_1| \geq |K_2| \geq ... \geq |K_n| $, then $m = n$ and $|H_i| = |K_i| \; (\forall i)$.
 \end{proof}
 
-\begin{example}[Using Cardinality and Generators]{exm:GroupTheory-AbelianGroups}
+\begin{example}[Using Cardinality and Generators]{exm:group-abelian-group}
     \textbf{Prove that every abelian group of order that is a product of primes is also cyclic.}
-    Given any abelian Group of order $ p \cdot q $. If there is no prime such that 
+    Given any abelian Group of order $ p \cdot q $. If there is no prime such that
 \end{example}
 
 
@@ -101,31 +99,31 @@ These facts help us count the number of subgroups in a given set.
 \paragraph{A Dihedral Group ($D_n$)} is a group of all permutations of a n-sided Regular
 Polygon. The number of elements in this group is $2^n$.
 
-\begin{definition}[Permutation Groups]{def:GroupTheory-PermutationGroups}
-Permutation Groups are a group of permutations, where a permutation is a
-bijective function from a group to itself. Eg.
-\begin{equation}
-    Example Permutation = 
-    \begin{bmatrix}
-        A_0 & A_1 & A_2 & A_3 & A_4 & ... \\
-        \alpha(A_0) & \alpha(A_1) & \alpha(A_2) & \alpha(A_3) & \alpha(A_4) & ... 
-    \end{bmatrix}
-\end{equation}
+\begin{definition}[Permutation Groups]{def:group-permutation-groups}
+    Permutation Groups are a group of permutations, where a permutation is a
+    bijective function from a group to itself. Eg.
+    \begin{equation}
+        Example Permutation =
+        \begin{bmatrix}
+            A_0         & A_1         & A_2         & A_3         & A_4         & ... \\
+            \alpha(A_0) & \alpha(A_1) & \alpha(A_2) & \alpha(A_3) & \alpha(A_4) & ...
+        \end{bmatrix}
+    \end{equation}
 \end{definition}
 
 \paragraph{Disjoint Cycle Notation} Any permutation can be written as a product of disjoint cycles.
 Each cyclic subgroup is expressed as a separate disjoint cycle.
 \begin{equation}
     (1,3)(2,7)(4,5,6)(8) =
-    \begin{bmatrix} 
-        1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\ 
-        3 & 7 & 1 & 5 & 6 & 4 & 2 & 8 
+    \begin{bmatrix}
+        1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\
+        3 & 7 & 1 & 5 & 6 & 4 & 2 & 8
     \end{bmatrix}
 \end{equation}
 
 These Permutation Cycles can be multiplied together (that is operated by the Group Operator, Function Composition). eg.
 \begin{eqnarray*}
-    P_1 \times P_2 
+    P_1 \times P_2
     & = & (1,3)(2,7)(4,5,6)(8) \times (1,2,3,7)(6,4,8)(5) \\
     & = & (1,3)(2,7)(4,5,6)(8)(1,2,3,7)(6,4,8)(5) \\
     & = & (1,7,3,2)(4,8)(5,6)
@@ -160,10 +158,10 @@ By Convention, we can choose not to write down single element cycles.
     \item \textbf{aH is a subgroup of G, iff} $\mathbf{a \in H}$, aH must have identity e to be a subgroup, since $aH \cap eH \neq \phi \implies aH = eH = H$. By Property 2, $a \in H$. Conversely if $a \in H$ then $aH = H$ is a subgroup.
 \end{enumerate}
 
-\begin{theorem}[Lagrange's Theorem]{thm:GroupTheory-LagrangeTheorem}
+\begin{theorem}[Lagrange's Theorem]{thm:groups-lagrange-theorem}
     If G is a finite group and H is a subgroup of G, then $|H|$ divides $|G|$. Moreover, the number of distinct (loft/right) cosets of H in G are $|G|/|H|$.
 \end{theorem}
-\begin{proof}[Lagrange's Theorem]{prf:GroupTheory-LagrangeTheorem}
+\begin{proof}[Lagrange's Theorem]{prf:groups-lagrange-theorem}
     Using the Properties proven above, $|aH| = |bH| = |eH| = |H|$ and $aH = bH$ or $aH \cap bH = \phi$, therefore $|G|$ is divisible by $|H|$.
 \end{proof}
 
@@ -199,20 +197,23 @@ By Convention, we can choose not to write down single element cycles.
 
 \subsection{Isomorphisms}
 
-\begin{definition}[Isomorphism]{}
-A Isomorphism is a bijective mapping from one group onto another wherein if $ a \times b = c $ then $ \Phi(a) \times \Phi(b) = \Phi(c) $. That is the mapping preserve the result of every operation, and every inverse.
+\begin{definition}[Isomorphism]{def:isomorphism}
+    A Isomorphism is a bijective mapping from one group onto another wherein if $ a \times b = c $ then $ \Phi(a) \times \Phi(b) = \Phi(c) $. That is the mapping preserve the result of every operation, and every inverse.
 \end{definition}
 
 \paragraph{Automorphism} is an Isomorphism that exists from a group onto itself. \\
 \vspace{10px}
-\begin{example}[Disproving Isomorphisms]{exm:GroupTheory-DisprovingIsomorphisms}
+
+\begin{example}[Disproving Isomorphisms]{exm:groups-disproving-isomorphisms}
     \textbf{The Set of Real numbers can never be isomorphic to proper subset of itself under the operation addition.}
     \paragraph{} The homomorphisms of real numbers to its proper subsets under addition are highly constrained: $ \phi(a) + \phi(a) = \phi(2a) \implies \phi(m) = qm $. Therefore there can only be a multiplicative map that holds the homomorphism.
     \paragraph{} Any subgroup of rational numbers can be generated by a subset of the series if prime inverses: $\{\frac{1}{2},\frac{1}{3},\frac{1}{5},\frac{1}{7},\frac{1}{11},\frac{1}{13},...\}$, the set of all prime denominators. Since both of our subgroups are generated by a subset of this set, there must exist a map, just a multiplicative factor, $\phi$, from $A \rightarrow B$.
     This never exists, since there is no such factor that maps the set of prime numbers to another set of prime numbers (or the reciprocals thereof).
 \end{example}
+
 \vspace{10px}
-\begin{example}[Proving Isomorphisms]{exm:GroupTheory-ProvingIsomorphisms}
+
+\begin{example}[Proving Isomorphisms]{exm:groups-proving-isomorphisms}
     \textbf{From $\braket{\mathbb{R} | +}$ to $\braket{\mathbb{R} | \times}$, show an isomorphism exists}.
     \paragraph{} We have $\phi(x) = 2^x$, the mapping is bijective, and $\phi(x) \times \phi(y) = 2^x \times 2^y = 2^{x+y} = \phi(x+y)$
 \end{example}
@@ -222,12 +223,12 @@ A Isomorphism is a bijective mapping from one group onto another wherein if $ a 
 
 \subsection{Homomorphism}
 
-\begin{definition}[Group Homomorphism]
-    A Homomorphism $\phi$ is a mapping from a group G to $\bar{G}$ is a mapping that preserves the group operation, i.e. $ \phi(ab) = \phi(a)\phi(b) \; (\forall\;a,b \in G)$. \\ 
+\begin{definition}[Group Homomorphism]{def:groups-homomorphism}
+    A Homomorphism $\phi$ is a mapping from a group G to $\bar{G}$ is a mapping that preserves the group operation, i.e. $ \phi(ab) = \phi(a)\phi(b) \; (\forall\;a,b \in G)$. \\
     (The mapping may not be bijective, as opposed to Isomorphism)
 \end{definition}
 
-\begin{definition}[Kernel of a Homomorphism]
+\begin{definition}[Kernel of a Homomorphism]{def:homomorphism-kernel}
     The kernel of a homomorphism $\phi$ from a group G to a group with identity e is the set $\{x \in G\;|\;\phi(x) = e\}$. The kernel of $\phi$ is denoted by $Ker \phi$. \\
     (All elements in G that map to the identity, for isomorphism it's just the identity element - trivial subgroup)
 \end{definition}
@@ -237,9 +238,9 @@ A Isomorphism is a bijective mapping from one group onto another wherein if $ a 
 
 \subsection{Rings}
 
-\paragraph{A Ring is a set with 2 binary operations on it} 
-such that the following properties hold true. (Z is a arbitrary set, and 
-$+$ and $\times$ are arbitrary operations in $\braket{ Z | +, \times }$, 
+\paragraph{A Ring is a set with 2 binary operations on it}
+such that the following properties hold true. (Z is a arbitrary set, and
+$+$ and $\times$ are arbitrary operations in $\braket{ Z | +, \times }$,
 also $+$ is the first and $\times$ is second operation on the ring).
 \begin{itemize}
     \item Associativity over +: (a + b) + c = a + (b + c)
@@ -269,4 +270,4 @@ In summary, A Ring is a Abelian Group over +, and Associative and Distributive o
 
 \paragraph{Characteristic of a Ring} is the least positive integer n such that nx = 0 for all x in the Ring. If no such integer exists then it is 0.
 \\ If R is a ring with unity (1), then the characteristic of n is the order of 1, unless its $\infty$ in which case characteristic is 0.
-\\ Characteristic of an integral domain can only be 0 or prime. Its because if the field is finite, then $0 = n \cdot 1 = (p \cdot 1)(q \cdot 1)$. So, either $p \cdot 1 = 0$, or $q \cdot 1 = 0$. Since p or q are smaller than n, then p or q is the characteristic, not n. 
+\\ Characteristic of an integral domain can only be 0 or prime. Its because if the field is finite, then $0 = n \cdot 1 = (p \cdot 1)(q \cdot 1)$. So, either $p \cdot 1 = 0$, or $q \cdot 1 = 0$. Since p or q are smaller than n, then p or q is the characteristic, not n.
