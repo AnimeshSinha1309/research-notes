@@ -13,6 +13,7 @@
 \usepackage{subcaption}
 \usepackage{multicol}
 \usepackage{paralist}
+\usepackage{parskip}
 \usepackage{tcolorbox}
 \usepackage{tikz}
 \usepackage{braket}
@@ -212,6 +213,31 @@ frametitleaboveskip=\dimexpr-\ht\strutbox\relax
 \label{#2}}{\end{mdframed}}
 
 
+\newcounter{algo}[section]\setcounter{algo}{0}
+\renewcommand{\thealgo}{\arabic{section}.\arabic{algo}}
+\newenvironment{algo}[2][]{%
+\refstepcounter{algo}%
+\ifstrempty{#1}%
+{\mdfsetup{%
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,fill=pink!20]
+{\strut Algorithm~\thealgo};}}
+}%
+{\mdfsetup{%
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,fill=pink!20]
+{\strut Algorithm~\thealgo:~#1};}}%
+}%
+\mdfsetup{innertopmargin=10pt,linecolor=black,%
+linewidth=2pt,topline=true,%
+frametitleaboveskip=\dimexpr-\ht\strutbox\relax
+}
+\begin{mdframed}[]\relax%
+\label{#2}}{\end{mdframed}}
+
+
 
 \let\cleardoublepage\clearpage
 
@@ -239,8 +265,12 @@ frametitleaboveskip=\dimexpr-\ht\strutbox\relax
     \vfill
 \end{titlepage}
 
+\tableofcontents
+
+\input{tex/ml/BayesianMethods.tex}
+\input{tex/ml/ReinforcementLearning.tex}
 \input{tex/ml/BasicArchitectures.tex}
-\input{tex/math/GroupTheory.tex}
 \input{tex/particle/DeepParticle.tex}
+\input{tex/math/GroupTheory.tex}
 
 \end{document}
